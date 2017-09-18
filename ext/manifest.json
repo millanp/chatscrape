@@ -15,20 +15,30 @@
         "persistent": true
     },
     "browser_action": {
-        "default_icon": "icons/icon19.png",
-        "default_title": "browser action demo",
-        "default_popup": "src/browser_action/browser_action.html"
+        "default_icon": "icons/greencircle.png"
     },
     "permissions": [
-        "https://youtube.com/*"
+        "tabs",
+        "downloads",
+        "https://www.youtube.com/*"
     ],
     "content_scripts": [{
-        "matches": [
-            "<all_urls>"
-        ],
-        "js": [
-            "js/jquery/jquery.min.js",
-            "src/inject/inject.js"
-        ]
-    }]
+            "matches": [
+                "https://*.youtube.com/watch*"
+            ],
+            "js": [
+                "js/jquery/jquery.min.js",
+                "src/inject/watchpage.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://*.youtube.com/live_chat*"
+            ],
+            "js": [
+                "js/jquery/jquery.min.js",
+                "src/inject/chatpage.js"
+            ]
+        }
+    ]
 }
