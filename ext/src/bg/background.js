@@ -16,7 +16,6 @@ chrome.runtime.onMessage.addListener(
                 watchTabIds.push(tab.id);
                 subCount = request.subCount;
                 dlSubCount(subCount, request.vidId);
-                alert(watchTabIds);
             });
         }
         if (request.action == "setChatTabId") {
@@ -24,12 +23,6 @@ chrome.runtime.onMessage.addListener(
                 chatTabIds.push(tab.id);
             });
         }
-        // var downloadUrl = "data:,";
-        // downloadUrl += encodeURIComponent(request.urlList);
-        // chrome.downloads.download({
-        //     url: downloadUrl,
-        //     filename: request.name
-        // })
     }
 );
 
