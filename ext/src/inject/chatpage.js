@@ -4,6 +4,10 @@ function getFilename() {
     var vidId = window.URL
 }
 
+function getVidId() {
+    return window.location.hash;
+}
+
 function getUsernameAndContent(newNode) {
     return {
         user: newNode.querySelector('#author-name').innerText,
@@ -37,7 +41,7 @@ chrome.extension.sendMessage({}, function(response) {
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         if (request.action == "getData") {
-            sendResponse({ chatsObject: chats });
+            sendResponse({ chatsObject: chats, vidId: getVidId() });
             chats = {};
         }
     }
